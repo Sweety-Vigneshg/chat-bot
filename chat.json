@@ -1,0 +1,146 @@
+{
+  "chatbot_rules": {
+    "examples": [
+      {
+        "customer_input": "What is Zoho InsightX?",
+        "suggested_response": "Zoho InsightX is an AI-driven productivity tool designed to analyze sentiments and boost your work efficiency. How can I assist you further?"
+      },
+      {
+        "customer_input": "How can I improve my productivity?",
+        "suggested_response": "To enhance your productivity, Zoho InsightX provides personalized tips based on sentiment analysis. Let me know what specific areas you're interested in!"
+      },
+      {
+        "customer_input": "Tell me more about sentiment analysis.",
+        "suggested_response": "Sentiment analysis in Zoho InsightX helps you gauge the emotional tone of text inputs, enabling smarter decisions and better collaboration."
+      },
+      {
+        "customer_input": "What features does Zoho InsightX have?",
+        "suggested_response": "Some key features of Zoho InsightX include sentiment analysis, task prioritization, and seamless integration with productivity apps. Would you like to learn more about any of these?"
+      },
+      {
+        "customer_input": "Can I use Zoho InsightX with other Zoho apps?",
+        "suggested_response": "Yes! Zoho InsightX integrates seamlessly with other Zoho apps, like Zoho CRM, Zoho Cliq, and Zoho Projects. How can I help you with integration?"
+      },
+      {
+        "customer_input": "How does voice recognition work?",
+        "suggested_response": "Zoho InsightX uses advanced voice recognition to transcribe your speech into text, making it easier to interact without typing. Would you like to try it?"
+      },
+      {
+        "customer_input": "What is the difference between Zoho InsightX and other productivity tools?",
+        "suggested_response": "Unlike traditional productivity tools, Zoho InsightX utilizes AI-powered sentiment analysis to provide actionable insights. It's tailored for smarter decision-making!"
+      },
+      {
+        "customer_input": "Hi",
+        "suggested_response": "Hello! How can I assist you today?"
+      },
+      {
+        "customer_input": "Hello",
+        "suggested_response": "Hi there! How can I help you today?"
+      },
+      {
+        "customer_input": "Hey",
+        "suggested_response": "Hey! How can I assist you today?"
+      },
+      {
+        "customer_input": "How are you?",
+        "suggested_response": "I'm doing great, thank you for asking! How can I help you today?"
+      },
+      {
+        "customer_input": "What's up?",
+        "suggested_response": "Not much, just here to help! What can I do for you today?"
+      },
+      {
+        "customer_input": "Thank you",
+        "suggested_response": "You're welcome! Let me know if you need anything else."
+      },
+      {
+        "customer_input": "Thanks",
+        "suggested_response": "You're welcome! Feel free to ask me anything else."
+      },
+      {
+        "customer_input": "Thank you very much",
+        "suggested_response": "You're very welcome! If you have any other questions, don't hesitate to ask."
+      },
+      {
+        "customer_input": "Thanks a lot",
+        "suggested_response": "No problem! I'm here to help whenever you need it."
+      },
+      {
+        "customer_input": "Goodbye",
+        "suggested_response": "Goodbye! Have a great day ahead!"
+      },
+      {
+        "customer_input": "Bye",
+        "suggested_response": "Goodbye! Feel free to reach out anytime!"
+      },
+      {
+        "customer_input": "See you later",
+        "suggested_response": "See you later! Take care!"
+      },
+      {
+        "customer_input": "Help",
+        "suggested_response": "I'm here to assist you! What do you need help with today?"
+      },
+      {
+        "customer_input": "Can you assist me?",
+        "suggested_response": "Of course! How can I assist you today?"
+      },
+      {
+        "customer_input": "What is your name?",
+        "suggested_response": "I am Zoho InsightX, your assistant. How can I help you today?"
+      },
+      {
+        "customer_input": "Who created you?",
+        "suggested_response": "I was created by Zoho, a company dedicated to helping businesses with productivity and collaboration tools."
+      },
+      {
+        "customer_input": "What is Zoho CRM?",
+        "suggested_response": "Zoho CRM is a customer relationship management software that helps businesses manage their sales, marketing, and support operations in one platform."
+      },
+      {
+        "customer_input": "What is Zoho Cliq?",
+        "suggested_response": "Zoho Cliq is a team communication tool that helps you collaborate and communicate with your team through chat, voice, and video calls."
+      },
+      {
+        "customer_input": "What is Zoho Projects?",
+        "suggested_response": "Zoho Projects is a project management tool that helps you plan, track, and collaborate on your projects, ensuring your team stays productive and on track."
+      },
+      {
+        "customer_input": "How can I integrate Zoho InsightX with Zoho CRM?",
+        "suggested_response": "Zoho InsightX can be integrated with Zoho CRM by using APIs and webhooks. I can guide you through the process. Would you like to learn how?"
+      },
+      {
+        "customer_input": "Is there a mobile app for Zoho InsightX?",
+        "suggested_response": "Yes! Zoho InsightX is available as a mobile app, so you can stay productive on the go. Would you like more details?"
+      },
+      {
+        "customer_input": "What integrations does Zoho InsightX support?",
+        "suggested_response": "Zoho InsightX supports integrations with Zoho CRM, Zoho Cliq, Zoho Projects, and many other productivity tools. Let me know which one you'd like to integrate with!"
+      },
+      {
+        "customer_input": "Can I track my team's performance using Zoho InsightX?",
+        "suggested_response": "Yes, you can track your team's performance using Zoho InsightX's sentiment analysis and task prioritization features. Would you like a demo?"
+      },
+      {
+        "customer_input": "How does sentiment analysis help my team?",
+        "suggested_response": "Sentiment analysis helps you understand how your team feels about specific tasks or projects, enabling you to address issues proactively and improve collaboration."
+      },
+      {
+        "customer_input": "What’s new in the latest version of Zoho InsightX?",
+        "suggested_response": "The latest version of Zoho InsightX includes new features like real-time sentiment analysis, enhanced voice recognition, and deeper integrations with Zoho's suite of apps."
+      },
+      {
+        "customer_input": "Can I schedule tasks in Zoho InsightX?",
+        "suggested_response": "Yes! Zoho InsightX allows you to schedule tasks, prioritize them based on sentiment analysis, and ensure your team stays on track."
+      },
+      {
+        "customer_input": "What can I do if the voice recognition doesn't work?",
+        "suggested_response": "If voice recognition isn't working, try restarting the app or checking your microphone settings. Let me know if you need any more help troubleshooting!"
+      },
+      {
+        "customer_input": "What is Zoho One?",
+        "suggested_response": "Zoho One is a suite of over 40 integrated business apps that cover everything from sales and marketing to HR and accounting, all in one platform."
+      }
+    ]
+  }
+}

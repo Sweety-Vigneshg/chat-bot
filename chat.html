@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zoho InsightX</title>
+  <style>
+    /* Global Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      text-align: center;
+      background-color: #4caf50;
+      color: white;
+      padding: 20px 0;
+    }
+
+    main {
+      margin: 20px;
+      flex-grow: 1;
+    }
+
+    section {
+      margin: 20px 0;
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    #chat-widget {
+      width: 300px;
+      height: 400px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      position: fixed;
+      bottom: 70px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      background-color: #ffffff;
+      transition: transform 0.3s ease-in-out;
+      overflow: hidden;
+    }
+
+    #chat-header {
+      background-color: #4caf50;
+      color: white;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header-icons {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-start;
+    }
+
+    .header-icons button {
+      border: none;
+      background-color: transparent;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .header-icons button:hover {
+      color: #ddd;
+    }
+
+    #chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 10px;
+    }
+
+    #chat-input {
+      display: flex;
+      padding: 10px;
+      border-top: 1px solid #ccc;
+    }
+
+    #chat-input input {
+      flex: 1;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    #chat-input button {
+      margin-left: 10px;
+      padding: 8px 12px;
+      border: none;
+      background-color: #4caf50;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    #chat-input button:hover {
+      background-color: #45a049;
+    }
+
+    /* Chat launcher icon */
+    #chat-launcher {
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      font-size: 24px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+    }
+
+    #chat-launcher.hidden {
+      display: none;
+    }
+
+    #chat-launcher:hover {
+      background-color: #45a049;
+    }
+
+    /* Mic Icon for Voice Functionality */
+    #voice-btn {
+      background-color: transparent;
+      color: #4caf50;
+      font-size: 24px;
+      border: none;
+      cursor: pointer;
+      position: absolute;
+      right: 10px;
+      bottom: 60px;
+    }
+
+    /* Mic Popup */
+    #mic-popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: none;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #mic-popup .popup-content {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    #mic-popup button {
+      background-color: #4caf50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    /* Footer adjustment */
+    footer {
+      height: 25px;
+      width: 100%;
+      background-color: #4caf50;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 0px;
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Zoho InsightX</h1>
+    <p>Proactive Sentiment Analysis and Productivity Integration</p>
+  </header>
+
+  <main>
+    <section id="chat-widget-container">
+      <div id="chat-widget">
+        <div id="chat-header">
+          <span>InsightX Bot</span>
+          <div class="header-icons">
+            <button id="minimize-btn">--</button>
+            <button id="maximize-btn">◻</button>
+            <button id="close-btn">✖</button>
+          </div>
+        </div>
+        <div id="chat-messages"></div>
+        <div id="chat-input">
+          <input type="text" id="user-input" placeholder="Ask me anything...">
+          <button id="send-btn">Send</button>
+        </div>
+        <!-- Mic Button for Voice-to-Text -->
+        <button id="voice-btn">🎤</button>
+      </div>
+      <!-- Chat Launcher Icon -->
+      <button id="chat-launcher" class="hidden">💬</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>Zoho InsightX - Empowering Sentiment-Driven Productivity</p>
+  </footer>
+
+  <!-- Mic Popup for Voice Input -->
+  <div id="mic-popup">
+    <div class="popup-content">
+      <h3>Speak Now...</h3>
+      <p id="mic-status">Listening...</p>
+      <button id="mic-close-btn">Close</button>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const sendBtn = document.getElementById("send-btn");
+      const userInput = document.getElementById("user-input");
+      const chatMessages = document.getElementById("chat-messages");
+      const voiceBtn = document.getElementById("voice-btn");
+      const micPopup = document.getElementById("mic-popup");
+      const micStatus = document.getElementById("mic-status");
+      const micCloseBtn = document.getElementById("mic-close-btn");
+  
+      // Mic popup for voice functionality
+      voiceBtn.addEventListener("click", () => {
+        micPopup.style.display = "flex";
+        micStatus.textContent = "Listening...";
+        startVoiceRecognition(); // Start voice recognition when mic is clicked
+      });
+  
+      // Close Mic Popup when user clicks close button
+      micCloseBtn.addEventListener("click", () => {
+        micPopup.style.display = "none";
+        recognition.stop(); // Stop the recognition if user decides to close
+      });
+  
+      // Start Voice Recognition
+      let recognition;
+      function startVoiceRecognition() {
+        if (!('webkitSpeechRecognition' in window)) {
+          alert("Your browser does not support Speech Recognition.");
+          return;
+        }
+  
+        recognition = new webkitSpeechRecognition();
+        recognition.continuous = true;  // Keep listening until stopped
+        recognition.interimResults = true;  // Show partial results as well
+        recognition.lang = 'en-US'; // Set language to English (can be changed as needed)
+  
+        recognition.onstart = () => {
+          micStatus.textContent = "Listening...";
+        };
+  
+        recognition.onerror = (event) => {
+          micStatus.textContent = "Error occurred. Try again.";
+        };
+  
+        recognition.onresult = (event) => {
+          let transcript = '';
+          for (let i = event.resultIndex; i < event.results.length; i++) {
+            transcript += event.results[i][0].transcript;
+          }
+  
+          userInput.value = transcript; // Show recognized text in input field
+          micStatus.textContent = "Speech recognized: " + transcript;
+  
+          // Optionally, send to chatbot after recognition is complete
+          if (event.results[event.results.length - 1].isFinal) {
+            sendChatInput(transcript); // Send text to chatbot when final results are available
+          }
+        };
+  
+        recognition.onend = () => {
+          if (micPopup.style.display === "flex") {
+            micStatus.textContent = "Listening...";
+            recognition.start(); // Restart recognition if it ends unexpectedly
+          }
+        };
+  
+        recognition.start();
+      }
+  
+      // Handle Send button click
+      sendBtn.addEventListener("click", () => {
+        const message = userInput.value;
+        if (message.trim() !== "") {
+          const messageElement = document.createElement("div");
+          messageElement.textContent = message;
+          chatMessages.appendChild(messageElement);
+          userInput.value = ""; 
+          sendChatInput(message);  // Send typed message to chatbot
+        }
+      });
+  
+      // Send the user input to chatbot
+      function sendChatInput(input) {
+        // Display user message in chat
+        chatMessages.innerHTML += `<div>User: ${input}</div>`;
+  
+        // Call API to get chatbot response
+        getChatbotResponse(input);
+      }
+  
+      // API Call to Zoho or other chatbot API
+      async function fetchChatData() {
+  try {
+    const apiUrl = "https://cliq.zoho.com/api/v2/chats";
+    const accessToken = "3e7b31c4bda927a3498ca1b13d9b9b7ba8bb5b243c"; // Replace with dynamically fetched token
+
+    const response = await fetch(apiUrl, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      displayChatData(data.chats);
+    } else {
+      throw new Error(`Error ${response.status}: Unable to fetch data`);
+    }
+  } catch (error) {
+    console.error("Error fetching chat data:", error);
+  }
+}
+
+    });
+  </script>
+  
+</body>
+</html>
