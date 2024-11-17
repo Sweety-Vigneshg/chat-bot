@@ -323,30 +323,30 @@
       }
   
       // API Call to Zoho or other chatbot API
-      async function getChatbotResponse(query) {
-        try {
-          const apiUrl = "https://cliq.zoho.com/api/v2/chats"; 
-          const response = await fetch(apiUrl, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': 'Bearer your-zoho-auth-token' // Add your Zoho API Token
-            },
-            body: JSON.stringify({ query: query })
-          });
-  
-          if (response.ok) {
-            const data = await response.json();
-            const botResponse = data.response; // Assuming the API sends a "response" field
-            chatMessages.innerHTML += `<div>Bot: ${botResponse}</div>`;
-          } else {
-            throw new Error('API request failed');
-          }
-        } catch (error) {
-          console.error("Error:", error);
-          chatMessages.innerHTML += `<div>Bot: Sorry, I couldn't get a response. Please try again later.</div>`;
-        }
-      }
+      async function fetchChatData() {
+  try {
+    const apiUrl = "https://cliq.zoho.com/api/v2/chats";
+    const accessToken = "3e7b31c4bda927a3498ca1b13d9b9b7ba8bb5b243c"; // Replace with dynamically fetched token
+
+    const response = await fetch(apiUrl, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      displayChatData(data.chats);
+    } else {
+      throw new Error(`Error ${response.status}: Unable to fetch data`);
+    }
+  } catch (error) {
+    console.error("Error fetching chat data:", error);
+  }
+}
+
     });
   </script>
   
