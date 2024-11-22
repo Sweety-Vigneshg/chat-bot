@@ -104,7 +104,6 @@ This project is licensed under the [MIT License](LICENSE).
 For questions or suggestions, reach out via:
 
 - GitHub: [Sweety_Vigneshg](https://github.com/Sweety-Vigneshg)
-- Email: vickystft@gmail.com
 
 ---
 
