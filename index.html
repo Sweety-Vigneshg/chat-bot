@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cliqtrix - Enhance your communication with our intelligent chatbot solutions.">
+    <meta name="keywords" content="Cliqtrix, Chatbot, Zoho SalesIQ, CRM, AI Assistant">
+    <meta name="author" content="Your Name">
+    <title>Cliqtrix - AI Chat Assistant for CRM</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f3f3;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3rem;
+            color: #333;
+        }
+
+        main {
+            padding: 2rem;
+        }
+
+        .crm-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .crm-card {
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            width: 30%;
+            margin-bottom: 20px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .crm-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .crm-card h3 {
+            color: #05783A;
+            margin-bottom: 15px;
+        }
+
+        .crm-card button {
+            background: #05783A;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .crm-card button:hover {
+            background: #04632E;
+        }
+
+        #about{
+            text-align: center;
+            margin-bottom: 50px;
+            margin-top: 50px;
+        }
+
+        footer {
+            background-color: #f7f3f3;
+            color: rgb(37, 29, 29);
+            text-align: center;
+            padding: 1rem 0;
+            position: relative;
+            width: 100%;
+            margin-top: 2rem;
+        }
+
+        /* Toast styles */
+        #toast {
+            position: fixed;
+            bottom: 120px;
+            text-align: center;
+            left: 44%;
+            background-color: #5c5c5c;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        #toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .integration-section {
+            background-color: #e9f5f4;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .integration-section h3 {
+            color: #05783A;
+            margin-bottom: 20px;
+        }
+
+        .integration-section p {
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .integration-section code {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            border-radius: 4px;
+            display: block;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        .copy-btn {
+            background-color: #05783A;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-size: 1rem;
+        }
+
+        .copy-btn:hover {
+            background-color: #057538;
+        }
+
+        .navbar {
+            margin-bottom: 20px;
+            background-color: #f7f7f7;
+        }
+
+        .navbar-nav li {
+           margin-right: 18px;
+        }
+
+        .navbar-nav li a {
+          color: #091241 !important;
+          font-weight: 500;
+        }
+
+        .navbar-brand {
+          font-size: 1.5rem;
+          font-weight: bold;
+          color: #091241 !important;
+        }
+
+        .navbar-header {
+           padding-left: 15px;
+        }
+
+        .about-section {
+            background-color: #fff;
+            padding: 3rem 2rem;
+            margin-top: 30px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .about-section h3 {
+            color: #05783A;
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <!-- Neotron Name/Logo -->
+                <a class="navbar-brand" href="/" style="color: #091241; font-weight: bold;">Neotron Ai</a>
+            </div>
+            <!-- Navigation Links -->
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#embedcode">Integration</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <main>
+        <div class="container" id="features">
+            <h2 class="text-center">Our Intelligent Assistant is Here to Help You Manage Your CRM</h2>
+            <p class="text-center">Neotron allows you to enhance customer communication and automate CRM tasks effortlessly. From lead management to customer feedback, let us handle it all!</p>
+
+            <div class="crm-section">
+                <div class="crm-card col-md-4">
+                    <h3>Lead Management</h3>
+                    <p>Collect and manage leads seamlessly with our AI-driven assistant.</p>
+                </div>
+                <div class="crm-card col-md-4">
+                    <h3>Customer Feedback</h3>
+                    <p>Gather and analyze feedback to improve your services.</p>
+                </div>
+                <div class="crm-card col-md-4">
+                    <h3>Appointment Scheduling</h3>
+                    <p>Book appointments with your customers effortlessly.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="integration-section" id="embedcode">
+        <h3>You Can Integrate Neotron to Your Website</h3>
+        <p>To integrate Neotron to your website, simply embed the following JavaScript snippet:</p>
+        <pre><code>
+            &lt;script&gt;
+                window.$zoho = window.$zoho || {};
+                $zoho.salesiq = $zoho.salesiq || { ready: function() {} };
+            &lt;/script&gt;
+            &lt;script id="zsiqscript" src="https://salesiq.zohopublic.in/widget?wc=siq935148ccc26876fb76fcb97999be305484a791f54b5115a1e97a6155f5faaec5" defer&gt;&lt;/script&gt;
+        </code></pre>
+        <button class="copy-btn" onclick="copyCode()">Copy Code</button>
+        <div id="toast"></div>
+    </div>
+
+
+    <div id="about">
+        <h2 class="text-center">Our Chat Assistant Neotron Ai !</h2>
+        <p class="text-center">Our intelligent chatbot is here to help you 24/7. Ask us anything about our services or products!</p>
+        <p class="text-center">Click the icon to interact with the chatbot!</p>
+    </div>
+
+    <script>
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = 'show';
+            setTimeout(() => {
+                toast.className = toast.className.replace('show', '');
+            }, 3000);
+        }
+
+        function copyCode() {
+            const codeBlock = document.querySelector('.integration-section code');
+            const range = document.createRange();
+            range.selectNode(codeBlock);
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(range);
+            document.execCommand('copy');
+            window.getSelection().removeAllRanges();
+            showToast("Code copied to clipboard!");
+        }
+    </script>
+
+<script>
+    window.$zoho = window.$zoho || {};
+    $zoho.salesiq = $zoho.salesiq || { ready: function() {} };
+</script>
+<script id="zsiqscript" src="https://salesiq.zohopublic.in/widget?wc=siq935148ccc26876fb76fcb97999be305484a791f54b5115a1e97a6155f5faaec5" defer></script>
+
+
+    <footer>
+        <p>&copy; 2024 Neotron. All rights reserved.</p>
+    </footer>
+</body>
+</html>
